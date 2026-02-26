@@ -7,6 +7,14 @@ public class Funcionario {
     private String cargo;
     private Double salario;
 
+    // CONTRUTOR
+
+    public Funcionario(String nome, String cargo, Double salario) {
+        this.nome = nome;
+        this.cargo = cargo;
+        this.salario = salario;
+    }
+
     //METODOS
     public String getNome() {
         return nome;
