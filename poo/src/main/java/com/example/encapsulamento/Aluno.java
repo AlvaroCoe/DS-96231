@@ -6,23 +6,18 @@ public class Aluno {
 
     private String nome;
     private String email;
+   // private String Turma;
+   // private String Curso;
     
     //CONSTRUTORES
 
     public Aluno(String nome, String email) {
         this.nome = nome;
         this.email = email;
+
     }
 
     //MÉTODOS
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getEmail() {
         return email;
@@ -32,6 +27,13 @@ public class Aluno {
         this.email = email;
     }
 
-    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
 
 }
