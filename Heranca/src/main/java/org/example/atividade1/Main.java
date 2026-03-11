@@ -1,6 +1,4 @@
-package org.example.ativadade1;
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
+package org.example.atividade1;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.example.ativadade1;
+package org.example.atividade1;
 
 public class Processador extends Cpu{
 
