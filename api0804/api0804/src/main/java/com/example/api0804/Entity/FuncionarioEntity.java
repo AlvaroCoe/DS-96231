@@ -14,16 +14,16 @@ public class FuncionarioEntity {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String Cpf;
+    private String cpf;
     private String email;
-
+    
     public FuncionarioEntity() {
     }
 
-    public FuncionarioEntity(Long id, String nome, String Cpf, String email) {
+    public FuncionarioEntity(Long id, String nome, String cpf, String email) {
         this.id = id;
         this.nome = nome;
-        this.Cpf = Cpf;
+        this.cpf = cpf;
         this.email = email;
     }
 
@@ -44,11 +44,11 @@ public class FuncionarioEntity {
     }
 
     public String getCpf() {
-        return Cpf;
+        return cpf;
     }
 
-    public void setCpf(String Cpf) {
-        this.Cpf = Cpf;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {
@@ -57,12 +57,6 @@ public class FuncionarioEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    } 
-
+    }
     
-
-    
-
-    
-
 }

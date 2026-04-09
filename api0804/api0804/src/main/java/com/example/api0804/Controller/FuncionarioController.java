@@ -13,29 +13,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.api0804.Entity.FuncionarioEntity;
-import com.example.api0804.Repository.FuncionarioRepository;
+import com.example.api0804.Service.FuncionarioService;
 
-@RestController
-@RequestMapping("/funcionarios")
-public class FuncionarioController {
+// 
 
-    @Autowired
-    private FuncionarioRepository repository; // Mudei o nome para não confundir
+// @RestController
+// @RequestMapping("/funcionarios")
+// public class FuncionarioController {
 
-    @GetMapping
-    public List<FuncionarioEntity> Listar() {
-        return repository.findAll(); // O método correto é findAll
-    }
+//     @Autowired
+//     private FuncionarioRepository repository; // Mudei o nome para não confundir
 
-    @PostMapping
-    public ResponseEntity<Object> AddFuncionario(@RequestBody FuncionarioEntity funcionario) {
-        repository.save(funcionario); // Salva o funcionário no banco de dados
+//     @GetMapping
+//     public List<FuncionarioEntity> Listar() {
+//         return repository.findAll(); // O método correto é findAll
+//     }
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(Map.of("Mensagem", "Funcionario cadastrado com sucesso!"));
-    }
-}
+//     @PostMapping
+//     public ResponseEntity<Object> AddFuncionario(@RequestBody FuncionarioEntity funcionario) {
+//         repository.save(funcionario); // Salva o funcionário no banco de dados
+
+//         return ResponseEntity
+//                 .status(HttpStatus.CREATED)
+//                 .body(Map.of("Mensagem", "Funcionario cadastrado com sucesso!"));
+//     }
+// }
 //atualizar com o debaixo
 
 @RestController
