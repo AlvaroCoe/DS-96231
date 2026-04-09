@@ -36,3 +36,34 @@ public class FuncionarioController {
                 .body(Map.of("Mensagem", "Funcionario cadastrado com sucesso!"));
     }
 }
+//atualizar com o debaixo
+
+@RestController
+@RequestMapping("/funcionarios")
+public class FuncionarioController {
+
+    @Autowired
+    private FuncionarioService service; // Injetar o Service em vez do Repository
+
+    @GetMapping
+    public List<FuncionarioEntity> Listar() {
+        return service.ListarTodos(); // Usar o método do service
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> AddFuncionario(@RequestBody FuncionarioEntity funcionario) {
+        try {
+            // Aqui chamamos o service que tem a lógica do CPF
+            service.salvarFuncionario(funcionario); 
+            
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(Map.of("Mensagem", "Funcionario cadastrado com sucesso!"));
+        } catch (IllegalArgumentException e) {
+            // Aqui pegamos a mensagem "Funcionario já cadastrado!" que você definiu
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("Erro", e.getMessage()));
+        }
+    }
+}
