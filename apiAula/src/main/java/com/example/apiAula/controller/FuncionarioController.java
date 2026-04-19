@@ -38,8 +38,6 @@ public class FuncionarioController {
         .body(Map.of("mensagem", "Funcionário cadastrado com sucesso"));
     }
 
-
-
     @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> AtualizarFuncionario(
 

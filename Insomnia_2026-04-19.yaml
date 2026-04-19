@@ -1,0 +1,162 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: ApiFuncionario
+meta:
+  id: wrk_9801ca86acee4a58badc2fafd8e97d19
+  created: 1775781859251
+  modified: 1776638261973
+  description: ""
+collection:
+  - name: Clientes
+    meta:
+      id: fld_edda511fc01747cdb64488076cbde3d2
+      created: 1775781874620
+      modified: 1775781874620
+      sortKey: -1775781874620
+      description: ""
+  - name: Funcionarios
+    meta:
+      id: fld_de5009ff28e642b79fc4b03e56d998a6
+      created: 1776637249164
+      modified: 1776637266945
+      sortKey: -1776637249164
+      description: ""
+    children:
+      - url: http://localhost:8080/funcionarios
+        name: Adicionar Funcionário
+        meta:
+          id: req_f254c36e08194b20a114f13cf04a17fa
+          created: 1776637268716
+          modified: 1776638071126
+          isPrivate: false
+          description: ""
+          sortKey: -1776637268716
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Neymar J",
+              "email": "Juninho@teste.com",
+              "idade": 30,
+              "salario": 35000.0,
+              "sexo": "MASCULINO",
+              "setor": "MARKETING"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/funcionarios
+        name: Listar Todos
+        meta:
+          id: req_2e832a1f6d924304a291c6e7786460db
+          created: 1776637590815
+          modified: 1776637713936
+          isPrivate: false
+          description: ""
+          sortKey: -1776637590815
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/funcionarios/4
+        name: Atualizar Funcionário
+        meta:
+          id: req_8f06b8f464c74219be2195a4912bf43a
+          created: 1776637624347
+          modified: 1776638030843
+          isPrivate: false
+          description: ""
+          sortKey: -1776637624347
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            	{
+
+            		"nome": "Messi L",
+            		"email": "Lionel@teste.com",
+            		"idade": 35,
+            		"salario": 15000.0,
+            		"sexo": "MASCULINO",
+            		"setor": "RECURSOS_HUMANOS"
+            	
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/funcionarios/2
+        name: Deletar Funcionário
+        meta:
+          id: req_72fd7611b91b45abbf4bcfd9408eaafa
+          created: 1776637646563
+          modified: 1776638092258
+          isPrivate: false
+          description: ""
+          sortKey: -1776637646563
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_ace5754ffe57e64d5d82684a8fb24e7c4a3bec71
+    created: 1775781859257
+    modified: 1775781859257
+environments:
+  name: Base Environment
+  meta:
+    id: env_ace5754ffe57e64d5d82684a8fb24e7c4a3bec71
+    created: 1775781859255
+    modified: 1775781859255
+    isPrivate: false
