@@ -18,7 +18,7 @@ public class GlobalException {
                 // ExceptionHandler para RuntimeException, que é a exceção lançada quando um funcionário já existe com o mesmo email
     }
 
-    @ExceptionHandler(IllegalAccessException.class)
+    @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalAccessException(IllegalAccessException ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
