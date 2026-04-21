@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 @Entity
 @Table (name = "tab_alunos")
 public class AlunoEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

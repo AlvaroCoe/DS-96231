@@ -16,6 +16,6 @@ public enum Curso {
     }
 
     public String getTexto() {
-        return texto;P
+        return texto;
     }
 }
