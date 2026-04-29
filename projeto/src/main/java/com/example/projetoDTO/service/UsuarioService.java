@@ -5,6 +5,7 @@ import com.example.projetoDTO.dto.UsuarioResponseDTO;
 import com.example.projetoDTO.entity.UsuarioEntity;
 import com.example.projetoDTO.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +15,15 @@ public class UsuarioService {
 
     @Autowired
     public UsuarioRepository repository;
+    @Autowired
+    public BCryptPasswordEncoder passwordEncoder;
 
     public List<UsuarioResponseDTO> ListarTodos () {
 
         return repository
                 .findAll()
                 .stream()
-                .map((u -> new UsuarioResponseDTO(u.getId(), u.getEmail())))
+                .map((u -> new UsuarioResponseDTO(u.getId(), u.getNome())))
                 .toList();
     }
 
@@ -31,7 +34,7 @@ public class UsuarioService {
         UsuarioEntity novoUsuario = new UsuarioEntity();
         novoUsuario.setNome(usuarioDTO.getNome());
         novoUsuario.setEmail(usuarioDTO.getEmail());
-        novoUsuario.setSenha(usuarioDTO.getSenha());
+        novoUsuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
 
 
         return repository.save(novoUsuario);
