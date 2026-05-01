@@ -29,6 +29,8 @@ public class FuncionarioController {
 
     @PostMapping
     public  ResponseEntity<Map<String, Object>> Salvar (@Valid@RequestBody FuncionarioRequestDTO f) {
+        service.SalvarFuncionario(f);
+
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(Map.of("Mensagem", "Funcionário cadastrado com sucesso."));
