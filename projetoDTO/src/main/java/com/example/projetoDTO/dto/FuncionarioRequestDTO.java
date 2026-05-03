@@ -20,7 +20,7 @@ public class FuncionarioRequestDTO { //REQUEST - Requisição do "model/Entity".
     @Size (min = 6, message = "A senha não pode conter menos de 6 caracteres.")
     private String senha;
 
-    @NotBlank(message = "A senha é obrigatória.")
+    @NotBlank(message = "O número telefônico é obrigatório.")
     @Size (max = 13,min = 10, message = "O telefone deve ter entre 10 e 13 dígitos.")
     private String telefone;
 
