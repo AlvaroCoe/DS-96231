@@ -21,7 +21,7 @@ public class UsuarioRequestDTO {
 
 
     @NotBlank(message = "A senha é de uso Obrigatório!")
-    @Size (min = 6,max = 18,message = "A senha deve conter entre 6 a 18 caracteres")
+    @Size (min = 6,max = 18,message = "A senha deve conter entre 6 a 18 caracteres!")
     private String senha;
 
     public UsuarioRequestDTO() {
