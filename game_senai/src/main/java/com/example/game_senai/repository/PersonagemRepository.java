@@ -11,5 +11,5 @@ public interface PersonagemRepository extends JpaRepository <PersonagemEntity, L
 
   Optional <PersonagemEntity> findByNome (String nome);
 
-  boolean existsByNome(String nome);
+ // boolean existsByNome(String nome);
 }

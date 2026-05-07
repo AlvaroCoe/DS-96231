@@ -1,0 +1,408 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: revisaoApi
+meta:
+  id: wrk_a4359256c5254bcfad6d471b7e93306b
+  created: 1777130359369
+  modified: 1778019283273
+  description: ""
+collection:
+  - name: Cenários
+    meta:
+      id: fld_ac6b4a42c13344aab15904e092ca8a42
+      created: 1776798577839
+      modified: 1778112784303
+      sortKey: -1776798577839
+      description: ""
+    children:
+      - url: http://localhost:8080/cenarios
+        name: Listar Cenários
+        meta:
+          id: req_2ebf5eebfc704aaa8c48a8c18028b722
+          created: 1776798583511
+          modified: 1778111422590
+          isPrivate: false
+          description: ""
+          sortKey: -1776798583511
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/cenarios
+        name: Adicionar Cenário
+        meta:
+          id: req_68870b71ddc2405495055484d6be8ba5
+          created: 1776798698958
+          modified: 1778113017872
+          isPrivate: false
+          description: ""
+          sortKey: -1776718115037
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Mangueira",
+            	"dificuldade" : "EIta carai",
+            	"modo" : "tiroteio",
+            	"periodo" : "noite"
+
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/cenarios/MaNgUeIrA
+        name: Atualizar Cenário
+        meta:
+          id: req_732ea4ff79b842188b3f26a8cfecbc78
+          created: 1776799332145
+          modified: 1778113103407
+          isPrivate: false
+          description: ""
+          sortKey: -1776677880800
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Mangueira",
+            	"dificuldade" : "EIta carai",
+            	"modo" : "tiroteio",
+            	"periodo" : "SPGNQAWIOERGHBAWR"
+
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/cenarios/Céu
+        name: Deletar Cenário
+        meta:
+          id: req_991893d1e3534209b954b4642e73b386
+          created: 1776799379386
+          modified: 1778112690522
+          isPrivate: false
+          description: ""
+          sortKey: -1776657763681.5
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Jogadores
+    meta:
+      id: fld_11b8c2a356f848a0b2f5cd79302c52a2
+      created: 1776814009583
+      modified: 1778103771591
+      sortKey: -1776717913501.5
+      description: ""
+    children:
+      - url: http://localhost:8080/jogadores
+        name: Listar Jogadores
+        meta:
+          id: req_7125ba0a281744fda80b65208ecd5d9d
+          created: 1776814009583
+          modified: 1778107938518
+          isPrivate: false
+          description: ""
+          sortKey: -1776798583511
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/jogadores
+        name: Logar Jogador
+        meta:
+          id: req_9582ad3841b54f22ab4f5d84ea59e90a
+          created: 1776814009583
+          modified: 1778108138419
+          isPrivate: false
+          description: ""
+          sortKey: -1776718115037
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Gabrielle Gavião",
+            	"email" : "GabiFalcão@gmail.com",
+            	"login" : "Eusouamiór",
+            	"senha" : "07062006"
+
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/jogadores
+        name: Deletar  Jogador
+        meta:
+          id: req_a3478ded531942ffb04a33c4f5efcec1
+          created: 1776814009583
+          modified: 1778107953167
+          isPrivate: false
+          description: ""
+          sortKey: -1776657763681.5
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/jogadores/1
+        name: Atualizar Jogador
+        meta:
+          id: req_db1c83fa2c104214b663ae0c57e7aebe
+          created: 1776814009583
+          modified: 1778108129106
+          isPrivate: false
+          description: ""
+          sortKey: -1776677880800
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Gabrielle Falcão",
+            	"email" : "GabiFalcão@gmail.com",
+            	"login" : "Eusouamiór",
+            	"senha" : "07062006"
+
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Personagens
+    meta:
+      id: fld_e407d5c7a0d34b83829f895da457ca37
+      created: 1778019306607
+      modified: 1778104019209
+      sortKey: -1778019306607
+      description: ""
+    children:
+      - url: http://localhost:8080/personagens
+        name: Listar Personagens
+        meta:
+          id: req_eca354579c104f27bf4fb69c1cff91b2
+          created: 1778019311279
+          modified: 1778023087137
+          isPrivate: false
+          description: ""
+          sortKey: -1778019311279
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/personagens
+        name: Cadastrar Personagem
+        meta:
+          id: req_68c7baf77872443d8213c6b0de45eccd
+          created: 1778023100037
+          modified: 1778104372068
+          isPrivate: false
+          description: ""
+          sortKey: -1777761279181.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Raze",
+            	"classe" : "Duelista",
+            	"dificuldade" : "Difícil",
+            	"nivelDeForça" : "8000"
+            	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/personagens/5
+        name: Atualizar Personagem
+        meta:
+          id: req_76904adeac824e41b955ddabf8d27b45
+          created: 1778023155459
+          modified: 1778027177824
+          isPrivate: false
+          description: ""
+          sortKey: -1777632263132.75
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            		"nome": "Talon",
+            		"classe": "Assassino",
+            		"dificuldade" : "utgcgcuvughv",
+            		"nivelDeForça": "2000"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/personagens/7
+        name: Deletar Personagem
+        meta:
+          id: req_a7f5e8a81a0b40b3b4908971c8618b35
+          created: 1778023218907
+          modified: 1778027150237
+          isPrivate: false
+          description: ""
+          sortKey: -1777567755108.375
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_db13b77868142980918cc953a78e1476a7517c82
+    created: 1778019283336
+    modified: 1778019283336
+environments:
+  name: Base Environment
+  meta:
+    id: env_7b3414f28f634c0abd14eb064b66ceff
+    created: 1775781859255
+    modified: 1778019282889
+    isPrivate: false
