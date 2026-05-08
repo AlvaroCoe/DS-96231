@@ -51,25 +51,24 @@ public class JogadorService {
 
     }
 
-    //ATUALIZAR
+    // ATUALIZAR POR LOGIN
 
-    public JogadorEntity AtualizarJogador (Long id, JogadorEntity jogador) {
-        if (!repository.existsById(id)) {
-            throw new IllegalArgumentException("Jogador não encontrado");
+public JogadorEntity AtualizarJogadorPorLogin(String login, JogadorEntity dadosNovos) {
+    JogadorEntity jogadorExistente = repository.findByLogin(login)
+            .orElseThrow(() -> new IllegalArgumentException("Jogador com login " + login + " não encontrado"));
+
+    // Mantém o ID original para atualizar o mesmo registro
+    dadosNovos.setId(jogadorExistente.getId());
+    return repository.save(dadosNovos);
         }
 
-        jogador.setId(id);
-        return repository.save(jogador);
+    // DELETAR POR LOGIN
 
-    }
-
-    // DELETAR
-
-    public void excluir (Long id) {
-        if (!repository.existsById(id)) {
-            throw new IllegalArgumentException("Jogador não encontrado!");
+public void excluirPorLogin(String login) {
+    if (repository.findByLogin(login).isEmpty()) {
+        throw new IllegalArgumentException("Jogador não encontrado com o login: " + login);
         }
-        repository.deleteById(id);
+    repository.deleteByLogin(login);
     }
 
 }

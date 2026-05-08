@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface PersonagemRepository extends JpaRepository <PersonagemEntity, Long> {
+public interface PersonagemRepository extends JpaRepository<PersonagemEntity, Long> {
+    Optional<PersonagemEntity> findByNome(String nome);
 
-  Optional <PersonagemEntity> findByNome (String nome);
-
- // boolean existsByNome(String nome);
+    @Transactional
+    void deleteByNome(String nome);
 }

@@ -38,28 +38,23 @@ public class JogadorController {
 
     }
 
-    // ATUALIZAR
-    @PutMapping ("/{id}")
-    public ResponseEntity<Map<String, Object>> AtualizarJogador (
-            @PathVariable Long id,
-            @RequestBody JogadorEntity jogador) {
-        service.AtualizarJogador(id,jogador);
+// ATUALIZAR POR LOGIN
 
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(Map.of("Memsagem", "Jogador atualizado com sucesso!"));
+    @PutMapping("/{login}")
+public ResponseEntity<Map<String, Object>> AtualizarJogador(
+        @PathVariable String login, 
+        @RequestBody JogadorEntity jogador) {
+    
+    service.AtualizarJogadorPorLogin(login, jogador);
+    return ResponseEntity.ok(Map.of("Mensagem", "Jogador atualizado com sucesso!"));
+}
 
-    }
+// DELETAR POR LOGIN
 
-    //DELETAR
-
-    @DeleteMapping ("/{id}")
-    public ResponseEntity <Map<String, Object>> DeletarJogador (@PathVariable Long id) {
-        service.excluir(id);
-
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(Map.of("Mensagem", "Jogador deletado com sucesso!"));
-    }
+@DeleteMapping("/{login}")
+public ResponseEntity<Map<String, Object>> DeletarJogador(@PathVariable String login) {
+    service.excluirPorLogin(login);
+    return ResponseEntity.ok(Map.of("Mensagem", "Jogador deletado com sucesso!"));
+}
 
 }

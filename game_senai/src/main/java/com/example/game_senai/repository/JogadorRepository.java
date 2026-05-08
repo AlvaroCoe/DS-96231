@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface JogadorRepository extends JpaRepository <JogadorEntity, Long> {
+public interface JogadorRepository extends JpaRepository<JogadorEntity, Long> {
+    Optional<JogadorEntity> findByEmail(String email);
+    Optional<JogadorEntity> findByLogin(String login);
 
-    Optional <JogadorEntity> findByEmail (String email);
-    Optional <JogadorEntity> findByLogin (String login);
+    @Transactional
+    void deleteByLogin(String login); // Novo método
 }

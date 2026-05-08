@@ -52,26 +52,24 @@ public class PersonagemService {
 
 }
 
-    //ATUALIZAR
+    // ATUALIZAR POR NOME
 
-    public PersonagemEntity AtualizarPersonagem (Long id, PersonagemEntity personagem) {
-        if (!repository.existsById(id)) {
-            throw new IllegalArgumentException("Personagem não encontrado!");
-        }
+public PersonagemEntity AtualizarPersonagemPorNome(String nome, PersonagemEntity personagemNovo) {
+    PersonagemEntity existente = repository.findByNome(nome)
+            .orElseThrow(() -> new IllegalArgumentException("Personagem não encontrado"));
 
-        personagem.setId(id);
-        return repository.save(personagem);
+    personagemNovo.setId(existente.getId());
+    return repository.save(personagemNovo);
+}
 
+    // DELETAR POR NOME
+
+public void excluirPorNome(String nome) {
+    if (repository.findByNome(nome).isEmpty()) {
+        throw new IllegalArgumentException("Personagem não encontrado!");
     }
-
-    // DELETAR
-
-    public void excluir (Long id) {
-        if (!repository.existsById(id)) {
-            throw new IllegalArgumentException("Personagem não encontrado!");
-        }
-        repository.deleteById(id);
-    }
+    repository.deleteByNome(nome);
+}
 
 
 

@@ -40,27 +40,22 @@ public class PersonagemController {
     }
 
     // ATUALIZAR
-    @PutMapping ("/{id}")
-    public ResponseEntity<Map<String, Object>> AtualizarPersonagem (
-            @PathVariable Long id,
-            @RequestBody PersonagemEntity personagem) {
-        service.AtualizarPersonagem(id,personagem);
 
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(Map.of("Memsagem", "Personagem atualizado com sucesso!"));
+@PutMapping("/{nome}")
+public ResponseEntity<Map<String, Object>> AtualizarPersonagem(
+        @PathVariable String nome,
+        @RequestBody PersonagemEntity personagem) {
+    
+    service.AtualizarPersonagemPorNome(nome, personagem);
+    return ResponseEntity.ok(Map.of("Mensagem", "Personagem atualizado com sucesso!"));
+}
 
-    }
+    // DELETAR
 
-    //DELETAR
-
-    @DeleteMapping ("/{id}")
-    public ResponseEntity <Map<String, Object>> DeletarPersonagem (@PathVariable Long id) {
-        service.excluir(id);
-
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(Map.of("Mensagem", "Personagem deletado com sucesso!"));
-    }
+ @DeleteMapping("/{nome}")
+public ResponseEntity<Map<String, Object>> DeletarPersonagem(@PathVariable String nome) {
+    service.excluirPorNome(nome);
+    return ResponseEntity.ok(Map.of("Mensagem", "Personagem deletado com sucesso!"));
+}
 
 }
