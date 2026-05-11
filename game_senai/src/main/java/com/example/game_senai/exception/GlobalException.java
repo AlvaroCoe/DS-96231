@@ -30,7 +30,20 @@ public class GlobalException {
         return ResponseEntity.status(status).body(err);
     }
 
-    // 3. Erro Genérico de Servidor (500 - Internal Server Error)
+    // 3. Erro de Duplicidade (409 - Conflict ou 400 - Bad Request) add posteriormente
+    @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> dataIntegrity(org.springframework.dao.DataIntegrityViolationException e, HttpServletRequest request) {
+        String error = "Conflito de Dados";
+        // Usamos 409 Conflict porque o recurso (email/login) já existe
+        HttpStatus status = HttpStatus.CONFLICT;
+
+        String message = "Email ou Login já cadastrados no sistema.";
+
+        StandardError err = new StandardError(Instant.now(), status.value(), error, message, request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    // 4. Erro Genérico de Servidor (500 - Internal Server Error)
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<StandardError> runtimeError(RuntimeException e, HttpServletRequest request) {
         String error = "Erro de Processamento Interno";
@@ -39,7 +52,7 @@ public class GlobalException {
         return ResponseEntity.status(status).body(err);
     }
 
-    // 4. Erro de Validação de Bean Validation (@Valid)
+    // 5. Erro de Validação de Bean Validation (@Valid)
     @ExceptionHandler(org.springframework.web.bind.MethodArgumentNotValidException.class)
     public ResponseEntity<StandardError> validationError(org.springframework.web.bind.MethodArgumentNotValidException e, HttpServletRequest request) {
         String error = "Erro de validação";

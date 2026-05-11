@@ -1,6 +1,7 @@
 package com.example.game_senai.repository;
 
 import com.example.game_senai.entity.PersonagemEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
