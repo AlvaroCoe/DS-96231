@@ -1,12 +1,11 @@
 package com.example.exercicioDTO.entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table (name = "tab_alunos")
-public class AlunosEntity {
+public class AlunoEntity {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -32,10 +31,10 @@ public class AlunosEntity {
     @Column (nullable = false)
     private String senha;
 
-    public AlunosEntity() {
+    public AlunoEntity() {
     }
 
-    public AlunosEntity(Long id, String nome, String email, String curso, Turno turno, String codigoAcesso, String senha) {
+    public AlunoEntity(Long id, String nome, String email, String curso, Turno turno, String codigoAcesso, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;

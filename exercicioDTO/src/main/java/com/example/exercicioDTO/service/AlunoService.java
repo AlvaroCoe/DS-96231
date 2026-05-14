@@ -2,7 +2,7 @@ package com.example.exercicioDTO.service;
 
 import com.example.exercicioDTO.dto.AlunoRequestDTO;
 import com.example.exercicioDTO.dto.AlunoResponseDTO;
-import com.example.exercicioDTO.entity.AlunosEntity;
+import com.example.exercicioDTO.entity.AlunoEntity;
 import com.example.exercicioDTO.repository.AlunorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,20 +28,21 @@ public class AlunoService {
                 .map(a -> new AlunoResponseDTO(
                         a.getNome(),
                         a.getCurso(),
-                        a.getTurno()
+                        a.getTurno(),
+                        a.getCodigoAcesso()
                 ))
                 .toList();
     }
 
     //ADICIONAR
 
-    public AlunosEntity SalvarAluno(AlunoRequestDTO dto) {
-        if (repository.findByNome(dto.getNome()).isPresent()) {
-            throw new RuntimeException("Nome já em uso!");
+    public AlunoEntity SalvarAluno(AlunoRequestDTO dto) {
+        if (repository.findByCodigoAcesso(dto.getCodigoAcesso()).isPresent()) {
+            throw new RuntimeException("Código de acesso único! Já em uso!");
 
         }
 
-        AlunosEntity novoAluno = new AlunosEntity();
+        AlunoEntity novoAluno = new AlunoEntity();
         novoAluno.setNome(dto.getNome());
         novoAluno.setEmail(dto.getEmail());
         novoAluno.setCurso(dto.getCurso());
@@ -55,10 +56,10 @@ public class AlunoService {
 
     //ATUALIZAR
 
-    public AlunosEntity AtualizarAlunoCA(String nome, AlunosEntity novosDados) {
-        AlunosEntity AlunoExistente = repository.findByNome(nome)
-                .orElseThrow(() -> new IllegalArgumentException("Aluno com nome "
-                        + nome + " não encontrado"));
+    public AlunoEntity AtualizarAlunoCA(String codigoAcesso, AlunoEntity novosDados) {
+        AlunoEntity AlunoExistente = repository.findByCodigoAcesso(codigoAcesso)
+                .orElseThrow(() -> new IllegalArgumentException("Aluno com CA "
+                        + codigoAcesso + " não encontrado"));
 
     novosDados.setId(AlunoExistente.getId()); // Mantém o ID original para atualizar o mesmo registro
     return repository.save(novosDados);
@@ -66,12 +67,12 @@ public class AlunoService {
 
    //DELETAR
     
-    public void excluirPorCA(String nome) {
+    public void excluirPorCA(String codigoAcesso) {
 
-        if (repository.findByNome(nome).isEmpty()) {
-            throw new IllegalArgumentException("Aluno não encontrado com o nome: " + nome);
+        if (repository.findByCodigoAcesso(codigoAcesso).isEmpty()) {
+            throw new IllegalArgumentException("Aluno não encontrado com o CA: " + codigoAcesso);
         }
-        repository.deleteByNome(nome);
+        repository.deleteByCodigoAcesso(codigoAcesso);
     }
 
 }

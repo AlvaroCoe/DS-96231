@@ -2,19 +2,19 @@ package com.example.exercicioDTO.dto;
 
 import com.example.exercicioDTO.entity.Turno;
 
-public class AlunoResponseDTO {
+public class ProfessorResponseDTO {
 
     private String nome;
-    private String curso;
+    private String email;
     private Turno turno;
     private String codigoAcesso;
 
-    public AlunoResponseDTO() {
+    public ProfessorResponseDTO() {
     }
 
-    public AlunoResponseDTO(String nome, String curso, Turno turno, String codigoAcesso) {
+    public ProfessorResponseDTO(String nome, String email, Turno turno, String codigoAcesso) {
         this.nome = nome;
-        this.curso = curso;
+        this.email = email;
         this.turno = turno;
         this.codigoAcesso = codigoAcesso;
     }
@@ -27,12 +27,12 @@ public class AlunoResponseDTO {
         this.nome = nome;
     }
 
-    public String getCurso() {
-        return curso;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Turno getTurno() {

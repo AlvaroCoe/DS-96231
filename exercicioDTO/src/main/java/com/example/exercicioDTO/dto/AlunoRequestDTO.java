@@ -25,7 +25,7 @@ public class AlunoRequestDTO {
     private String codigoAcesso;
 
     @NotBlank (message = "Infome a sua senha para acessar o seu portal!")
-    @Size (min = 6, max = 18, message = "Informe sua senha!")
+    @Size (min = 6, max = 18, message = "Sua senha deve conter entre 6 e 18 caracteres!")
     private String senha;
 
     public AlunoRequestDTO() {
