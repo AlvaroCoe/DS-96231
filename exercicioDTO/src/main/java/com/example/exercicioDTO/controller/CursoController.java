@@ -1,11 +1,8 @@
 package com.example.exercicioDTO.controller;
 
-import com.example.exercicioDTO.dto.AlunoRequestDTO;
-import com.example.exercicioDTO.dto.AlunoResponseDTO;
 import com.example.exercicioDTO.dto.CursoRequestDTO;
 import com.example.exercicioDTO.dto.CursoResponseDTO;
-import com.example.exercicioDTO.entity.AlunoEntity;
-import com.example.exercicioDTO.service.AlunoService;
+import com.example.exercicioDTO.entity.CursoEntity;
 import com.example.exercicioDTO.service.CursoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping ("/Cursos")
+@RequestMapping ("/cursos")
 public class CursoController {
 
     @Autowired
