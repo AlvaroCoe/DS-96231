@@ -34,23 +34,23 @@ public class CursoController {
         service.SalvarCurso (c);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(Map.of("Mensagem", "Aluno Cadastrado com sucesso!"));
+                .body(Map.of("Mensagem", "Curso adicionado com sucesso!"));
 
     }
-    @PutMapping("/{codigoAcesso}")
-    public ResponseEntity<Map<String, Object>> AtualizarAluno(
-            @PathVariable String codigoAcesso,
-            @RequestBody AlunoEntity aluno) {
+    @PutMapping("/{sigla}")
+    public ResponseEntity<Map<String, Object>> AtualizarCurso(
+            @PathVariable String sigla,
+            @RequestBody CursoEntity curso) {
 
-        service.AtualizarAlunoCA(codigoAcesso, aluno);
-        return ResponseEntity.ok(Map.of("Mensagem", "Aluno atualizado com sucesso!"));
+        service.AtualizarCurso(sigla, curso);
+        return ResponseEntity.ok(Map.of("Mensagem", "Curso atualizado com sucesso!"));
     }
 
 
-    @DeleteMapping("/{codigoAcesso}")
-    public ResponseEntity<Map<String, Object>> ExcluirAluno (@PathVariable String codigoAcesso) {
-        service.excluirPorCA(codigoAcesso);
-        return ResponseEntity.ok(Map.of("Mensagem", "Aluno descadastrado com sucesso!"));
+    @DeleteMapping("/{sigla}")
+    public ResponseEntity<Map<String, Object>> ExcluirCurso (@PathVariable String sigla) {
+        service.excluir(sigla);
+        return ResponseEntity.ok(Map.of("Mensagem", "Curso descadastrado com sucesso!"));
     }
 
 
