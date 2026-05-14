@@ -1,15 +1,11 @@
 package com.example.exercicioDTO.service;
 
-import com.example.exercicioDTO.dto.AlunoRequestDTO;
 import com.example.exercicioDTO.dto.CursoRequestDTO;
 import com.example.exercicioDTO.dto.CursoResponseDTO;
-import com.example.exercicioDTO.dto.ProfessorResponseDTO;
-import com.example.exercicioDTO.entity.AlunoEntity;
 import com.example.exercicioDTO.entity.CursoEntity;
 import com.example.exercicioDTO.repository.CursoRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,63 +14,47 @@ import java.util.List;
 public class CursoService {
 
     @Autowired
-    public CursoRepository repository;
+    private CursoRepository repository;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private ModelMapper mapper;
 
-    public List<CursoResponseDTO> ListarCurso () {
-        return repository
-                .findAll()
+    // LISTAR
+    public List<CursoResponseDTO> ListarCurso() {
+        return repository.findAll()
                 .stream()
-                .map(c -> new CursoResponseDTO(
-                        c.getNome(),
-                        c.getSigla(),
-                        c.getTurno(),
-                        c.getValor()
-                ))
+                .map(curso -> mapper.map(curso, CursoResponseDTO.class))
                 .toList();
     }
-    //ADICIONAR
 
-    public CursoEntity AddCurso (CursoRequestDTO dto) {
+    // ADICIONAR
+    public CursoEntity SalvarCurso(CursoRequestDTO dto) {
         if (repository.findBySigla(dto.getSigla()).isPresent()) {
-            throw new RuntimeException("Curso já cadastrado!");
-
+            throw new RuntimeException("Curso com a sigla " + dto.getSigla() + " já cadastrado!");
         }
 
-        CursoEntity novoCurso = new CursoEntity();
-        novoCurso.setNome(dto.getNome());
-        novoCurso.setSigla(dto.getSigla());
-        novoCurso.setSetor(dto.getSetor());
-        novoCurso.setTurno(dto.getTurno());
-        novoCurso.setValor(dto.getValor());
-
+        // Converte DTO para Entidade automaticamente
+        CursoEntity novoCurso = mapper.map(dto, CursoEntity.class);
+        
         return repository.save(novoCurso);
-
     }
 
-    //ATUALIZAR
+    // ATUALIZAR
+    public CursoEntity AtualizarCurso(String sigla, CursoEntity novosDados) {
+        CursoEntity cursoExistente = repository.findBySigla(sigla)
+                .orElseThrow(() -> new IllegalArgumentException("Curso " + sigla + " não encontrado"));
 
-    public CursoEntity AtualizarCurso (String sigla, CursoEntity novosDados) {
-        CursoEntity CursoExistente = repository.findBySigla(sigla)
-                .orElseThrow(() -> new IllegalArgumentException("Curso "
-                        + sigla + " não encontrado"));
-
-        novosDados.setId(CursoExistente.getId()); // Mantém o ID original para atualizar o mesmo registro
+        // Mantém o ID original para garantir que o JPA faça o UPDATE e não um novo INSERT
+        novosDados.setId(cursoExistente.getId()); 
+        
         return repository.save(novosDados);
     }
 
-    //DELETAR
-
-    public void excluirPorSigla(String sigla) {
-
+    // DELETAR (Ajustado para o nome que você usou no Controller)
+    public void excluir(String sigla) {
         if (repository.findBySigla(sigla).isEmpty()) {
-            throw new IllegalArgumentException("Curso " + sigla + "não encontrado!");
+            throw new IllegalArgumentException("Não é possível excluir: Curso " + sigla + " não encontrado!");
         }
         repository.deleteBySigla(sigla);
     }
-
 }
-
-
