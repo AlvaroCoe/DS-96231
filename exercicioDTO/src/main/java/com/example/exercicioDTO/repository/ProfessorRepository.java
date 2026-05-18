@@ -1,6 +1,5 @@
 package com.example.exercicioDTO.repository;
 
-import com.example.exercicioDTO.entity.AlunoEntity;
 import com.example.exercicioDTO.entity.ProfessorEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +11,7 @@ import java.util.Optional;
 public interface ProfessorRepository extends JpaRepository <ProfessorEntity, Long> {
 
     Optional<ProfessorEntity> findByCodigoAcesso (String codigoAcesso);
-    Optional <AlunoEntity> findByEmail (String Email);
+    Optional<ProfessorEntity> findByEmail(String email);
 
     @Transactional
     void deleteByCodigoAcesso (String codigoAcesso);

@@ -37,7 +37,7 @@ public class AlunoController {
     @PutMapping("/{codigoAcesso}")
     public ResponseEntity<Map<String, Object>> AtualizarAluno(
             @PathVariable String codigoAcesso,
-            @RequestBody AlunoUpdateDTO aluno) { //Atualizado de AlunoEntity para AlunoUpdateDTO
+            @RequestBody AlunoEntity aluno) { 
 
         service.AtualizarAlunoCA(codigoAcesso, aluno);
         return ResponseEntity.ok(Map.of("Mensagem", "Aluno atualizado com sucesso!"));

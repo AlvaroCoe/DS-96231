@@ -26,7 +26,7 @@ public class ProfessorEntity {
     @Column (nullable = false, unique = true)
     private String codigoAcesso;
 
-    @Column (nullable = false, length = 18)
+    @Column(nullable = false, length = 60)
     private String senha;
 
     public ProfessorEntity() {
