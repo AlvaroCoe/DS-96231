@@ -41,6 +41,7 @@ public class ClienteService {
         ClienteEntity novoCliente = new ClienteEntity();
         novoCliente.setNome(dto.getNome());
         novoCliente.setEmail(dto.getEmail());
+        novoCliente.setEndereco(dto.getEndereco());
 
         return repository.save(novoCliente);
 

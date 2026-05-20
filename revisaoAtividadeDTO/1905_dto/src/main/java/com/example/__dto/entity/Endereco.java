@@ -21,6 +21,8 @@ public class Endereco {
     @Column (nullable = false)
     private String cidade;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private UnidadeFederativa uf;
 
     public Endereco() {
