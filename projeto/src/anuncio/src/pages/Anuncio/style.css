@@ -1,0 +1,48 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #131314;
+  color: #e3e3e3;
+  font-family: sans-serif;
+}
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.anuncio-card {
+  display: flex;
+  max-width: 900px;
+  background: #1e1e1f;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.anuncio-image {
+  flex: 1;
+  background: #2a2a2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+}
+.placeholder-img { color: #666; font-weight: bold; }
+.anuncio-info {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tag { background: #646cff; color: white; width: fit-content; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem; }
+.price { font-size: 2rem; color: #4acc7d; font-weight: bold; margin: 1rem 0; }
+.description { color: #aaa; line-height: 1.6; margin-bottom: 1.5rem; }
+.btn-buy { background: #4acc7d; color: #111; border: none; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: transform 0.2s; }
+.btn-buy:hover { transform: scale(1.02); background: #3eb56d; }
+
+@media (max-width: 768px) {
+  .anuncio-card { flex-direction: column; }
+}
