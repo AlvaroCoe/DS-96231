@@ -19,19 +19,9 @@ public class UsuarioService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    //LISTAR
-    public List<UsuarioResponseDTO> ListarTodos () {
-        return repository
-                .findAll()
-                .stream()
-                .map(f -> new UsuarioResponseDTO(
-                        f.getNome(),
-                        f.getTelefone()
-                ))
-                .toList();
+    //CRUD
 
-    }
-    //ADICIONAR
+    // ADICIONAR - CREATE
 
     public UsuarioEntity SalvarUsuario (UsuarioRequestDTO dto) {
         if (repository.findByEmail(dto.getEmail()).isPresent()) {
@@ -47,7 +37,20 @@ public class UsuarioService {
         return repository.save(novoUsuario);
 
     }
-    //ATUALIZAR
+    //LISTAR - READ
+
+    public List<UsuarioResponseDTO> ListarTodos () {
+        return repository
+                .findAll()
+                .stream()
+                .map(f -> new UsuarioResponseDTO(
+                        f.getNome(),
+                        f.getTelefone()
+                ))
+                .toList();
+
+    }
+    //ATUALIZAR - UPDATE
 
     public UsuarioEntity AtualizarUsuario (Long id, UsuarioEntity usuario) {
         if (!repository.existsById(id)) {
@@ -58,7 +61,7 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
-    //EXCLUIR
+    //EXCLUIR - DELETE
 
     public void excluir (Long id) {
         if (!repository.existsById(id)) {
